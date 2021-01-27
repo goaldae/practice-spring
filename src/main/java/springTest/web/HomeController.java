@@ -17,18 +17,9 @@ import springTest.data.IngredientRepository;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-	private IngredientRepository ingredientRepo;
-	
-	@Autowired
-	public HomeController(IngredientRepository ingredientRepo) {
-		this.ingredientRepo = ingredientRepo;
-	}
-	
 	
 	@GetMapping	
-	public String home() {				
-		List<Ingredient> ingredients = new ArrayList();		
-		
+	public String home() {
 		return "home";
 	}
 	

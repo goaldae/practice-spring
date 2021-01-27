@@ -2,13 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="EUC-KR">
+		
+		<meta charset="utf-8">
 			<title>Spring practice</title>
 	</head>
 	
 	<body>
 		<h1>Design</h1>
 		
+		<span>빵을 선택하세요</span>
+		<div th:each="ingredient:${bread}">
+			<div th:text="${ingredient.name}"></div>
+		</div>
 		
+		<span>패티를 선택하세요</span>
+		<div th:each="ingredient:${patty}">			
+			<div th:text="${ingredient.name}"></div>
+		</div>
+		
+		<span>채소를 선택하세요</span>
+		<div th:each="ingredient:${vegetable}">
+			<div th:text="${ingredient.name}"></div>
+		</div>
+		<form method="GET" th:action="@{/}">
+		<button>Home</button>
+	</form>
 	</body>
 </html>
