@@ -8,5 +8,4 @@ public class Hamburger {
 	private long id;
 	private String name;
 	private Date createdAt;
-	
 }

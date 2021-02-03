@@ -1,5 +1,9 @@
 package springTest.web;
 
+
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,20 +12,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import springTest.Hamburger;
 import springTest.Ingredient;
 import springTest.Ingredient.Type;
+import springTest.data.HamburgerRepository;
 import springTest.data.IngredientRepository;
+
 
 @Controller
 @RequestMapping("/design")
 public class DesignController {
 	private IngredientRepository ingredientRepo;
+	private HamburgerRepository  hamburgerRepo;
 	
 	@Autowired
-	public DesignController(IngredientRepository ingredientRepo) {
+	public DesignController(IngredientRepository ingredientRepo, HamburgerRepository hamburgerRepo) {
 		this.ingredientRepo = ingredientRepo;
+		this.hamburgerRepo = hamburgerRepo;
 	}
 	
 	@GetMapping
@@ -39,7 +50,21 @@ public class DesignController {
 		return "design";
 	}
 	
+	@ModelAttribute("hamburger") 
+	Hamburger hamburger() {
+		return new Hamburger();
+	}
+	
 	private List<Ingredient> filterByType(List<Ingredient> ingredients, Type type){
 		return ingredients.stream().filter(x -> x.getType().equals(type)).collect(Collectors.toList());
+	}
+	
+	@PostMapping	
+	public String postDesignForm(Hamburger hamburger) {
+		System.out.println(hamburger);
+		
+		hamburgerRepo.save(hamburger);
+		
+		return "redirect:/orderList";
 	}
 }

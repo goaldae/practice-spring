@@ -10,21 +10,30 @@
 	<body>
 		<h1>Design</h1>
 		
-		<span>빵을 선택하세요</span>
-		<div th:each="ingredient:${bread}">
-			<div th:text="${ingredient.name}"></div>
-		</div>
-		
-		<span>패티를 선택하세요</span>
-		<div th:each="ingredient:${patty}">			
-			<div th:text="${ingredient.name}"></div>
-		</div>
-		
-		<span>채소를 선택하세요</span>
-		<div th:each="ingredient:${vegetable}">
-			<div th:text="${ingredient.name}"></div>
-		</div>
-		<form method="GET" th:action="@{/}">
+		<form method="post" th:object="${hamburger}">
+			<span>빵을 선택하세요</span>
+			<div th:each="ingredient:${bread}">
+				<div th:text="${ingredient.name}"></div>
+			</div>
+			<br/>
+			
+			<span>패티를 선택하세요</span>
+			<div th:each="ingredient:${patty}">
+				<div th:text="${ingredient.name}"></div>
+			</div>
+			<br/>
+			
+			<span>채소를 선택하세요</span>
+			<div th:each="ingredient:${vegetable}">
+				<div th:text="${ingredient.name}"></div>
+			</div>
+			<br/>
+			
+			<input type="text" th:field="*{name}">
+			<button>제출</button>
+		</form>
+			
+		<form method="GET" th:action="@{redirect:/}">
 		<button>Home</button>
 	</form>
 	</body>

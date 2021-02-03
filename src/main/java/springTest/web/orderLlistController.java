@@ -1,24 +1,22 @@
 package springTest.web;
 
+
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import lombok.extern.slf4j.Slf4j;
 import springTest.Hamburger;
-@Slf4j
 
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/orderList")
+public class orderLlistController {
 	
-	
-	@GetMapping	
-	public String home(Model model) {
+	@GetMapping
+	public String orderListController() {
 		
-		return "home";
+		
+		return "orderList";
 	}
-	
 }
