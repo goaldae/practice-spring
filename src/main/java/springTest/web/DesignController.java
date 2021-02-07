@@ -50,19 +50,17 @@ public class DesignController {
 		return "design";
 	}
 	
-	@ModelAttribute("hamburger") 
-	Hamburger hamburger() {
-		return new Hamburger();
-	}
-	
 	private List<Ingredient> filterByType(List<Ingredient> ingredients, Type type){
 		return ingredients.stream().filter(x -> x.getType().equals(type)).collect(Collectors.toList());
 	}
 	
+	@ModelAttribute("hamburger")
+	public Hamburger hamburger() {
+		return new Hamburger();
+	}
+	
 	@PostMapping	
 	public String postDesignForm(Hamburger hamburger) {
-		System.out.println(hamburger);
-		
 		hamburgerRepo.save(hamburger);
 		
 		return "redirect:/orderList";

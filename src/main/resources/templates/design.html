@@ -10,7 +10,7 @@
 	<body>
 		<h1>Design</h1>
 		
-		<form method="post" th:object="${hamburger}">
+		<form method="post">
 			<span>빵을 선택하세요</span>
 			<div th:each="ingredient:${bread}">
 				<div th:text="${ingredient.name}"></div>
@@ -29,7 +29,7 @@
 			</div>
 			<br/>
 			
-			<input type="text" th:field="*{name}">
+			<input type="text" name="name">
 			<button>제출</button>
 		</form>
 			

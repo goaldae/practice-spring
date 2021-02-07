@@ -10,7 +10,14 @@
 	<body>
 		<h1>Order List</h1>
 		
-		
+		<div th:each="hamburger:${hamburgers}">
+			<div th:text = "${hamburger.id}">
+			</div>
+			<div th:text = "${hamburger.name}">
+			</div>
+			<div th:text = "${hamburger.createdAt}">
+			</div>
+		</div>
 			
 		<form method="GET" th:action="@{/}">
 		<button>Home</button>
